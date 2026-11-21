@@ -17,19 +17,25 @@ public class jdbcApp2 {
 			Class.forName(driver);
 			Connection con = DriverManager.getConnection(DBurl, uname, pwd);
 			Statement stm = con.createStatement();
-			ResultSet rs = stm.executeQuery("select * from employee");
+			ResultSet rs = stm.executeQuery("SELECT * FROM EMPLOYEE");
 
-			while(rs.next()) {
-				
-				System.out.println(rs.getString(1)+" "+rs.getString(2)+" "+rs.getString(3)+" "+rs.getInt(4)+" "+rs.getString(5));
+//			while(rs.next()) {
+//				
+//				System.out.println(rs.getString(1)+" "+rs.getString(2)+" "+rs.getString(3)+" "+rs.getInt(4)+" "+rs.getString(5));
+//			}
+			while (rs.next()) {
+				System.out.println(rs.getString("EID") + " " + rs.getString("EFNAME") + " " + rs.getInt("ESAL"));
+//				System.out.println(rs.getString(1) + " " + rs.getString(2) + " " + rs.getInt(4));
+
 			}
 
-		} catch (Exception e) {
+		} 
+		catch (Exception e) {
 
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void main(String[] args) {
 
 		new jdbcApp2().Connection();
